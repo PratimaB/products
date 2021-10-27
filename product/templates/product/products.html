@@ -1,0 +1,61 @@
+{% extends 'main.html' %}
+{% block content %}
+
+  <!-- Main Section -->
+  <main class="home">
+    <section >
+      <div class="container container--narrow">
+        {% comment %} <div class="hero-section__box">
+          <h2><span>Vaishnavi Cakes & Baking Classes</span></h2>
+        </div> {% endcomment %}
+
+        <div class="hero-section__search">
+          <form id="searchForm" class="form" action="{% url 'products' %}" method="get">
+            <div class="form__field">
+              <label for="formInput#search">Search By Products </label>
+              <input class="input input--text" id="formInput#search" type="text" name="search_query"
+                placeholder="Search Cake by Name ,Flavour ,Occasion" value ="{{search_query}}"/>
+            </div>
+
+            <input class="btn btn--sub btn--lg" type="submit" value="Search" />
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- Search Result: DevList -->
+    <section class="projectsList">
+      <div class="container">
+        <div class="grid grid--three">
+        {% for product in products %}  
+          <div class="column">
+            <div class="card project">
+              <a href="{% url 'product' product.id %}" class="project">
+                <img class="project__thumbnail" src="{{ product.imageURL}}" alt="project thumbnail" />
+                <div class="card__body">
+                  <h3 class="project__title">{{product.title}}</h3>
+                  {% comment %}
+                    <p><a class="project__author" href="{% url 'user-profile' product.owner.id %}">By {{product.owner.name}}</a></p>
+                  
+                  <p class="project--rating">
+                    <span style="font-weight: bold;">{{product.vote_ratio}}%</span> Posititive
+                    Feedback ({{product.total_vote}} Vote{{product.total_vote|pluralize:"s"}})
+                  </p>
+                  {% endcomment %}
+                  <div class="project__tags">
+                    {% for tag in product.tags.all %} <!-- many to many relationship works automatically-->   
+                    <span class="tag tag--pill tag--main">
+                      <small>{{tag}}</small>
+                    </span>
+                    {% endfor %}     
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+        </div>
+      </div>
+    </section>
+    {% include 'pagination.html' with querySet=products custom_range=custom_range %}
+  </main>
+{% endblock content %}
