@@ -75,8 +75,8 @@ def profiles(request):
 
     return render(request,'users/profiles.html',context)
 
-def userProfile(request,pk):
-    profile = Profile.objects.get(id=pk)
+def userProfile(request):
+    profile = Profile.objects.first()
     #get skills with desciptions and other without descriptions
     topskills=profile.skill_set.exclude(description="")
     otherskills=profile.skill_set.filter(description="")

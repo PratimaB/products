@@ -29,69 +29,29 @@
                 </li>
                 {% endif %}
               </ul>
-              {% if request.profile.id != profile.id  %}
+{% comment %}               {% if request.profile.id != profile.id  %}
               <a href=" {% url 'create-message' profile.id %}" class="btn btn--sub btn--lg">Send Message </a>
-              {% endif %}
+              {% endif %} {% endcomment %}
             </div>
           </div>
         </div>
         <div class="column column--2of3">
           <div class="devInfo">
-            <h3 class="devInfo__title">About</h3>
+            <h3 class="devInfo__title">About Us</h3>
             <p class="devInfo__about">"{{profile.bio}}"</p>
           </div>
+
           <div class="devInfo">
-            <h3 class="devInfo__title">Details</h3>
-            <div class="devInfo__skills">
-
-            {% for skill in topskills %}
-              <div class="devSkill">
-                <h4 class="devSkill__title">{{skill.name}}</h4>
-                <p class="devSkill__info">{{skill.description}}</p>
-              </div>
-            {% endfor %}
-
-              {% comment %} <h3 class="devInfo__subtitle">Other Skills</h3> {% endcomment %}
-              <div class="devInfo__otherSkills">
-              {%for skill in otherskills %}
-                <span class="tag tag--pill tag--sub tag--lg">
-                  <small>{{skill.name}}</small>
-                </span>
-              {% endfor %}
-              </div>
-            </div>
+            <h3 class="devInfo__title">Working Hours</h3>
+            <p>
+              <div class="devInfo">
+              <h3 class="devInfo__about">Monday to Sunday,  10AM-7PM</h3>
+            </p>    
           </div>
           <div class="devInfo">
-            <h3 class="devInfo__title">Product</h3>
-            <div class="grid grid--two">
-              {% for product in profile.product_set.all %}
-              <div class="column">
-                <div class="card project">
-                  <a href="{% url 'product' product.id %}" class="project">
-                    <img class="project__thumbnail" src="{{product.imageURL}}" alt="project thumbnail" />
-                    <div class="card__body">
-                      <h3 class="project__title">{{product.title}}</h3>
-                      <p><a class="project__author" 
-                          href="{% url 'user-profile' product.owner.id %}">By {{product.owner.name}}</a></p>
-{% comment %}                       <p class="project--rating">
-                        <span style="font-weight: bold;">{{product.vote_ratio}}%</span> Postitive
-                        Feedback ({{product.total_vote}} Vote{{product.total_vote| pluralize:"s"}})
-                      </p> {% endcomment %}
-                      <div class="project__tags">
-                        {% for tag in product.tags.all %}
-                        <span class="tag tag--pill tag--main">
-                          <small>{{tag}}</small>
-                        </span>
-                        {% endfor %}
-                      </div>
-                    </div>
-                  </a>
-                </div>
+              <div class="devInfo__title">Find Us</div>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15066.901082234488!2d73.3907143!3d19.2508014!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8521b905b97004e0!2sVaishnavi%20Yummy%20Cakes!5e0!3m2!1sen!2sus!4v1635444642183!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
               </div>
-              {% endfor %}
-
-            </div>
-          </div>
         </div>
       </div>
     </div>

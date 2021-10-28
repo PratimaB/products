@@ -3,8 +3,8 @@
   <!-- Header Section -->
   <header class="header">
     <div class="container container--narrow">
-      <a href="{% url 'profiles' %}" class="header__logo">
-        <img src="{% static 'images/vyc.jfif' %}" alt="Cake Logo" /> 
+      <a href="{% url 'user-profile' %}" class="header__logo">
+       <img src="{% static 'images/vyc.jfif' %}" alt="Cake Logo" /> 
       </a>
       <nav class="header__nav">
         <input type="checkbox" id="responsive-menu" />
@@ -14,7 +14,7 @@
         </label>
         <ul class="header__menu">
           <li class="header__menuItem"><a href="{% url 'products' %}">Home</a></li>
-          <li class="header__menuItem"><a href="{% url 'profiles' %}">About</a></li>
+          <li class="header__menuItem"><a href="{% url 'user-profile' %}">About</a></li>
 
           {% if request.user.is_authenticated %}
             <li class="header__menuItem"><a href=" {% url 'inbox' %}">Inbox</a></li>
@@ -26,7 +26,10 @@
             <li class="header__menuItem"><a href="{% url 'login' %}" class="btn btn--sub">Login</a></li>
           {% endif %}
         </ul>
-      </nav>
+      </nav>  
     </div>
-
+    <h4 class="container container--narrow"> <span
+          class="hero-name">Vaishnavi Yummy Cakes & Baking Classes
+          </span>
+    </h4>
   </header>
