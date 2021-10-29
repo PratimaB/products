@@ -83,26 +83,15 @@ WSGI_APPLICATION = 'products.wsgi.application'
 
 
 # Database
-# postgres local db
-""" DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'products',
-        'USER':'postgres',
-        'PASSWORD':'manu',
-        'HOST':'localhost',
-        'PORT':5432
-    }
-} """
 
 #Prod
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'devsearch',
-        'USER':'postgres',
-        'PASSWORD':'h$pusAmba$302',
-        'HOST':'database-1.cdtjpkkdwiac.us-east-1.rds.amazonaws.com',
+        'USER': os.environ.get("DB_USER"),
+        'PASSWORD':os.environ.get("DB_PASSWORD"),
+        'HOST':os.environ.get("DB_HOST"),
         'PORT':5432
     } 
 }
@@ -144,8 +133,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST='smtp.gmail.com'
 EMAIL_PORT=587
 EMAIL_USE_TLS =True
-EMAIL_HOST_USER='vaishnaviyummycakesclasses@gmail.com'
-EMAIL_HOST_PASSWORD='xwyphderuxmtjpmk' 
+EMAIL_HOST_USER= os.environ.get("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD=os.environ.get("EMAIL_HOST_PASSWORD")
 # enter password ... else setup two step verification
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -181,8 +170,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-AWS_S3_ACCESS_KEY_ID='AKIAVLUXHDIEL6EF66Z5'
-AWS_S3_SECRET_ACCESS_KEY='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'
+AWS_S3_ACCESS_KEY_ID= os.environ.get("AWS_S3_ACCESS_KEY_ID")
+AWS_S3_SECRET_ACCESS_KEY=os.environ.get("AWS_S3_SECRET_ACCESS_KEY")
 AWS_STORAGE_BUCKET_NAME='devsearch-001-bucket'
 AWS_S3_REGION_NAME='ap-south-1'
 AWS_S3_SIGNATURE_VERSION = 's3v4'
